@@ -1,0 +1,18 @@
+{
+    "name": "vdebes/kata-employee-report",
+    "description": "PHP kata",
+    "type": "project",
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Vdebes\\KataEmployeeReport\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "vdebes",
+            "email": "vdebes@gmail.com"
+        }
+    ],
+    "require": {}
+}
