@@ -13,7 +13,7 @@ class EmployeeTest extends TestCase
     {
         $employee = new Employee(new Name('Max'), new Age(18));
         $this->assertInstanceOf(Employee::class, $employee);
-        $this->assertSame('MAX', $employee->getName()->asString());
+        $this->assertSame('MAX', (string) $employee->getName());
     }
 
     public function testItHasLegalAge(): void

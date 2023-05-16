@@ -15,7 +15,7 @@ final class Name
         $this->name = $name;
     }
 
-    public function asString(): string
+    public function __toString(): string
     {
         return strtoupper($this->name);
     }

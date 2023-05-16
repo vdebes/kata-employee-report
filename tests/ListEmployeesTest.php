@@ -19,8 +19,8 @@ class ListEmployeesTest extends TestCase
             $this->assertInstanceOf(Employee::class, $employee);
         }
 
-        $this->assertEquals('SEPP', $employees[0]->getName()->asString());
-        $this->assertEquals('MIKE', $employees[1]->getName()->asString());
+        $this->assertSame('SEPP', (string) $employees[0]->getName());
+        $this->assertSame('MIKE', (string) $employees[1]->getName());
     }
 
     public function testGetAllEmployeesSorted(): void
@@ -29,9 +29,9 @@ class ListEmployeesTest extends TestCase
         $employees = $employeeProvider->getAllEmployeesSorted();
 
         $this->assertCount(4, $employees);
-        $this->assertEquals('SEPP', $employees[0]->getName()->asString());
-        $this->assertEquals('NINA', $employees[1]->getName()->asString());
-        $this->assertEquals('MIKE', $employees[2]->getName()->asString());
-        $this->assertEquals('MAX', $employees[3]->getName()->asString());
+        $this->assertEquals('SEPP', (string) $employees[0]->getName());
+        $this->assertEquals('NINA', (string) $employees[1]->getName());
+        $this->assertEquals('MIKE', (string) $employees[2]->getName());
+        $this->assertEquals('MAX', (string) $employees[3]->getName());
     }
 }
