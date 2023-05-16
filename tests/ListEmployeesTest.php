@@ -4,6 +4,7 @@ namespace KataEmployeeReport\tests;
 
 use Vdebes\KataEmployeeReport\ListEmployees;
 use PHPUnit\Framework\TestCase;
+use Vdebes\KataEmployeeReport\Employee;
 
 class ListEmployeesTest extends TestCase
 {
@@ -13,8 +14,13 @@ class ListEmployeesTest extends TestCase
         $employees = $employeeProvider->getEmployeesOver18();
 
         $this->assertCount(2, $employees);
-        $this->assertEquals('SEPP', $employees[0][0]);
-        $this->assertEquals('MIKE', $employees[1][0]);
+        foreach ($employees as $employee) {
+            $this->assertGreaterThanOrEqual(18, $employee->getAge());
+            $this->assertInstanceOf(Employee::class, $employee);
+        }
+
+        $this->assertEquals('SEPP', $employees[0]->getName());
+        $this->assertEquals('MIKE', $employees[1]->getName());
     }
 
     public function testGetAllEmployeesSorted(): void
@@ -23,9 +29,9 @@ class ListEmployeesTest extends TestCase
         $employees = $employeeProvider->getAllEmployeesSorted();
 
         $this->assertCount(4, $employees);
-        $this->assertEquals('SEPP', $employees[0][0]);
-        $this->assertEquals('NINA', $employees[1][0]);
-        $this->assertEquals('MIKE', $employees[2][0]);
-        $this->assertEquals('MAX', $employees[3][0]);
+        $this->assertEquals('SEPP', $employees[0]->getName());
+        $this->assertEquals('NINA', $employees[1]->getName());
+        $this->assertEquals('MIKE', $employees[2]->getName());
+        $this->assertEquals('MAX', $employees[3]->getName());
     }
 }

@@ -23,7 +23,10 @@ class ListEmployees
             }
         );
 
-        return $employees;
+        return array_map(
+            static fn (array $employee): Employee => new Employee($employee[0], $employee[1]),
+            $employees
+        );
     }
 
     public function getEmployeesOver18(): array
@@ -32,8 +35,8 @@ class ListEmployees
             array_values(
                 array_filter(
                     self::getAllEmployees(),
-                    static function (array $employee): bool {
-                        return $employee[1] >= 18;
+                    static function (Employee $employee): bool {
+                        return $employee->getAge() >= 18;
                     }
                 )
             )
@@ -49,8 +52,8 @@ class ListEmployees
     {
         usort(
             $employees,
-            function (array $a, array $b): int {
-                return $b[0] <=> $a[0];
+            function (Employee $a, Employee $b): int {
+                return $b->getName() <=> $a->getName();
             }
         );
 
