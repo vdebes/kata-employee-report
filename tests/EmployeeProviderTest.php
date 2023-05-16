@@ -13,8 +13,8 @@ class EmployeeProviderTest extends TestCase
         $employees = $employeeProvider->getEmployeesOver18();
 
         $this->assertCount(2, $employees);
-        $this->assertEquals('MIKE', $employees[0][0]);
-        $this->assertEquals('SEPP', $employees[1][0]);
+        $this->assertEquals('SEPP', $employees[0][0]);
+        $this->assertEquals('MIKE', $employees[1][0]);
     }
 
     public function testGetAllEmployeesSorted(): void
@@ -23,9 +23,9 @@ class EmployeeProviderTest extends TestCase
         $employees = $employeeProvider->getAllEmployeesSorted();
 
         $this->assertCount(4, $employees);
-        $this->assertEquals('MAX', $employees[0][0]);
-        $this->assertEquals('MIKE', $employees[1][0]);
-        $this->assertEquals('NINA', $employees[2][0]);
-        $this->assertEquals('SEPP', $employees[3][0]);
+        $this->assertEquals('SEPP', $employees[0][0]);
+        $this->assertEquals('NINA', $employees[1][0]);
+        $this->assertEquals('MIKE', $employees[2][0]);
+        $this->assertEquals('MAX', $employees[3][0]);
     }
 }

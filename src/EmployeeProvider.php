@@ -28,7 +28,7 @@ class EmployeeProvider
 
     public function getEmployeesOver18(): array
     {
-        return self::sortByNameAscending(
+        return self::sortByNameDescending(
             array_values(
                 array_filter(
                     self::getAllEmployees(),
@@ -42,15 +42,15 @@ class EmployeeProvider
 
     public function getAllEmployeesSorted(): array
     {
-        return self::sortByNameAscending(self::getAllEmployees());
+        return self::sortByNameDescending(self::getAllEmployees());
     }
 
-    private static function sortByNameAscending(array $employees): array
+    private static function sortByNameDescending(array $employees): array
     {
         usort(
             $employees,
             function (array $a, array $b): int {
-                return $a[0] <=> $b[0];
+                return $b[0] <=> $a[0];
             }
         );
 
