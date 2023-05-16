@@ -22,4 +22,16 @@ final class AgeTest extends TestCase
         $this->assertInstanceOf(Age::class, $age);
         $this->assertSame(1, $age->asInteger());
     }
+
+    public function testItIsLegalIfOverOrEqualTo18(): void
+    {
+        $age = new Age(18);
+        $this->assertTrue($age->isLegal());
+    }
+
+    public function testItIsNotLegalIfBelow18(): void
+    {
+        $age = new Age(17);
+        $this->assertFalse($age->isLegal());
+    }
 }

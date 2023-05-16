@@ -18,4 +18,9 @@ final class Age
     {
         return $this->age;
     }
+
+    public function isLegal(): bool
+    {
+        return $this->age >= 18;
+    }
 }

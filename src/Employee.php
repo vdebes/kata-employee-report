@@ -27,6 +27,6 @@ final class Employee
 
     public function hasLegalAge(): bool
     {
-        return $this->age->asInteger() >= 18;
+        return $this->age->isLegal();
     }
 }
