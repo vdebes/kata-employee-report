@@ -20,11 +20,6 @@ final class Employee
         return $this->name;
     }
 
-    public function getAge(): Age
-    {
-        return $this->age;
-    }
-
     public function hasLegalAge(): bool
     {
         return $this->age->isLegal();

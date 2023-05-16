@@ -15,7 +15,7 @@ class ListEmployeesTest extends TestCase
 
         $this->assertCount(2, $employees);
         foreach ($employees as $employee) {
-            $this->assertGreaterThanOrEqual(18, $employee->getAge()->asInteger());
+            $this->assertTrue($employee->hasLegalAge());
             $this->assertInstanceOf(Employee::class, $employee);
         }
 
