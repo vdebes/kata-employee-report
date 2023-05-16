@@ -7,9 +7,11 @@ namespace Vdebes\KataEmployeeReport;
 final class ListEmployees
 {
     /**
-     * @return array<string, int>
+     * @var Employee[]
      */
-    private static function getAllEmployees(): array
+    private array $employees;
+
+    public function __construct()
     {
         $employees = [
             ['Max', 17],
@@ -18,7 +20,7 @@ final class ListEmployees
             ['Mike', 51],
         ];
 
-        return array_map(
+        $this->employees = array_map(
             static fn (array $employee): Employee => new Employee(new Name($employee[0]), new Age($employee[1])),
             $employees
         );
@@ -27,13 +29,13 @@ final class ListEmployees
     public function __invoke(?LegalAgeFilter $filter = null): array
     {
         if ($filter === null) {
-            return self::getAllEmployeesSorted();
+            return $this->getAllEmployeesSorted();
         }
 
         return self::sortByNameDescending(
             array_values(
                 array_filter(
-                    self::getAllEmployees(),
+                    $this->employees,
                     $filter()
                 )
             )
@@ -42,7 +44,7 @@ final class ListEmployees
 
     private function getAllEmployeesSorted(): array
     {
-        return self::sortByNameDescending(self::getAllEmployees());
+        return self::sortByNameDescending($this->employees);
     }
 
     private static function sortByNameDescending(array $employees): array
