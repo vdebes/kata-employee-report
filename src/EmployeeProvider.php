@@ -9,12 +9,21 @@ class EmployeeProvider
      */
     private static function getAllEmployees(): array
     {
-        return [
+        $employees = [
             ['Max', 17],
             ['Sepp', 18],
             ['Nina', 15],
             ['Mike', 51],
         ];
+
+        array_walk(
+            $employees,
+            static function (array &$employee): void {
+                $employee[0] = strtoupper($employee[0]);
+            }
+        );
+
+        return $employees;
     }
 
     public function getEmployeesOver18(): array
