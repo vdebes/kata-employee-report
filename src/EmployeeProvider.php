@@ -19,20 +19,21 @@ class EmployeeProvider
 
     public function getEmployeesOver18(): array
     {
-        return self::sortByNameAscending(array_values(array_filter(
-            self::getAllEmployees(),
-            function (array $employee): bool {
-                return $employee[1] >= 18;
-            }
-        )));
+        return self::sortByNameAscending(
+            array_values(
+                array_filter(
+                    self::getAllEmployees(),
+                    static function (array $employee): bool {
+                        return $employee[1] >= 18;
+                    }
+                )
+            )
+        );
     }
 
     public function getAllEmployeesSorted(): array
     {
-        $employees = self::getAllEmployees();
-        $employees = self::sortByNameAscending($employees);
-
-        return $employees;
+        return self::sortByNameAscending(self::getAllEmployees());
     }
 
     private static function sortByNameAscending(array $employees): array
@@ -43,6 +44,7 @@ class EmployeeProvider
                 return $a[0] <=> $b[0];
             }
         );
+
         return $employees;
     }
 }
