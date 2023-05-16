@@ -17,7 +17,7 @@ class ListEmployees
         ];
 
         return array_map(
-            static fn (array $employee): Employee => new Employee(new Name($employee[0]), $employee[1]),
+            static fn (array $employee): Employee => new Employee(new Name($employee[0]), new Age($employee[1])),
             $employees
         );
     }
@@ -29,7 +29,7 @@ class ListEmployees
                 array_filter(
                     self::getAllEmployees(),
                     static function (Employee $employee): bool {
-                        return $employee->getAge() >= 18;
+                        return $employee->getAge()->asInteger() >= 18;
                     }
                 )
             )

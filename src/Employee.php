@@ -7,9 +7,9 @@ namespace Vdebes\KataEmployeeReport;
 final class Employee
 {
     private Name $name;
-    private int $age;
+    private Age $age;
 
-    public function __construct(Name $name, int $age)
+    public function __construct(Name $name, Age $age)
     {
         $this->name = $name;
         $this->age = $age;
@@ -20,7 +20,7 @@ final class Employee
         return $this->name;
     }
 
-    public function getAge(): int
+    public function getAge(): Age
     {
         return $this->age;
     }
