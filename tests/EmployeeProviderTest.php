@@ -13,6 +13,8 @@ class EmployeeProviderTest extends TestCase
         $employees = $employeeProvider->getEmployeesOver18();
 
         $this->assertCount(2, $employees);
+        $this->assertEquals('Mike', $employees[0][0]);
+        $this->assertEquals('Sepp', $employees[1][0]);
     }
 
     public function testGetAllEmployeesSorted(): void

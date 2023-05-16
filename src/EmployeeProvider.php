@@ -19,12 +19,12 @@ class EmployeeProvider
 
     public function getEmployeesOver18(): array
     {
-        return array_values(array_filter(
+        return self::sortByNameAscending(array_values(array_filter(
             self::getAllEmployees(),
             function (array $employee): bool {
                 return $employee[1] >= 18;
             }
-        ));
+        )));
     }
 
     public function getAllEmployeesSorted(): array
