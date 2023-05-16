@@ -5,13 +5,14 @@ namespace KataEmployeeReport\tests;
 use Vdebes\KataEmployeeReport\ListEmployees;
 use PHPUnit\Framework\TestCase;
 use Vdebes\KataEmployeeReport\Employee;
+use Vdebes\KataEmployeeReport\LegalAgeFilter;
 
 class ListEmployeesTest extends TestCase
 {
     public function testGetEmployeesOver18(): void
     {
         $employeeProvider = new ListEmployees();
-        $employees = $employeeProvider->getEmployeesOver18();
+        $employees = $employeeProvider->getEmployeesOver18(new LegalAgeFilter());
 
         $this->assertCount(2, $employees);
         foreach ($employees as $employee) {
@@ -21,6 +22,17 @@ class ListEmployeesTest extends TestCase
 
         $this->assertSame('SEPP', (string) $employees[0]->getName());
         $this->assertSame('MIKE', (string) $employees[1]->getName());
+    }
+
+    public function testItListsAllEmployeesIfNoLegalAgeFilterIsUsed(): void
+    {
+        $employeeProvider = new ListEmployees();
+        $employees = $employeeProvider->getEmployeesOver18();
+
+        $this->assertCount(4, $employees);
+        foreach ($employees as $employee) {
+            $this->assertInstanceOf(Employee::class, $employee);
+        }
     }
 
     public function testGetAllEmployeesSorted(): void

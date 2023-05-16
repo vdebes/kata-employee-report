@@ -22,17 +22,17 @@ class ListEmployees
         );
     }
 
-    public function getEmployeesOver18(): array
+    public function getEmployeesOver18(?LegalAgeFilter $filter = null): array
     {
-        $isLegalFilter = static function (Employee $employee): bool {
-            return $employee->hasLegalAge();
-        };
+        if ($filter === null) {
+            return self::getAllEmployeesSorted();
+        }
 
         return self::sortByNameDescending(
             array_values(
                 array_filter(
                     self::getAllEmployees(),
-                    $isLegalFilter
+                    $filter()
                 )
             )
         );
