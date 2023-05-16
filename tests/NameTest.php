@@ -11,7 +11,7 @@ final class NameTest extends TestCase
     {
         $name = new Name('Max');
         $this->assertInstanceOf(Name::class, $name);
-        $this->assertSame('Max', $name->asString());
+        $this->assertSame('MAX', $name->asString());
     }
 
     public function testItCannotHaveAnEmptyName(): void

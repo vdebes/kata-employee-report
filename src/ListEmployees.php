@@ -16,13 +16,6 @@ class ListEmployees
             ['Mike', 51],
         ];
 
-        array_walk(
-            $employees,
-            static function (array &$employee): void {
-                $employee[0] = strtoupper($employee[0]);
-            }
-        );
-
         return array_map(
             static fn (array $employee): Employee => new Employee(new Name($employee[0]), $employee[1]),
             $employees

@@ -17,6 +17,6 @@ final class Name
 
     public function asString(): string
     {
-        return $this->name;
+        return strtoupper($this->name);
     }
 }

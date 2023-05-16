@@ -12,6 +12,6 @@ class EmployeeTest extends TestCase
     {
         $employee = new Employee(new Name('Max'), 18);
         $this->assertInstanceOf(Employee::class, $employee);
-        $this->assertSame('Max', $employee->getName()->asString());
+        $this->assertSame('MAX', $employee->getName()->asString());
     }
 }
