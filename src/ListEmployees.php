@@ -22,7 +22,7 @@ class ListEmployees
         );
     }
 
-    public function getEmployeesOver18(?LegalAgeFilter $filter = null): array
+    public function __invoke(?LegalAgeFilter $filter = null): array
     {
         if ($filter === null) {
             return self::getAllEmployeesSorted();
@@ -38,7 +38,7 @@ class ListEmployees
         );
     }
 
-    public function getAllEmployeesSorted(): array
+    private function getAllEmployeesSorted(): array
     {
         return self::sortByNameDescending(self::getAllEmployees());
     }

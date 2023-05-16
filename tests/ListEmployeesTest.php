@@ -12,7 +12,7 @@ class ListEmployeesTest extends TestCase
     public function testGetEmployeesOver18(): void
     {
         $employeeProvider = new ListEmployees();
-        $employees = $employeeProvider->getEmployeesOver18(new LegalAgeFilter());
+        $employees = $employeeProvider(new LegalAgeFilter());
 
         $this->assertCount(2, $employees);
         foreach ($employees as $employee) {
@@ -27,7 +27,7 @@ class ListEmployeesTest extends TestCase
     public function testItListsAllEmployeesIfNoLegalAgeFilterIsUsed(): void
     {
         $employeeProvider = new ListEmployees();
-        $employees = $employeeProvider->getEmployeesOver18();
+        $employees = $employeeProvider();
 
         $this->assertCount(4, $employees);
         foreach ($employees as $employee) {
@@ -38,7 +38,7 @@ class ListEmployeesTest extends TestCase
     public function testGetAllEmployeesSorted(): void
     {
         $employeeProvider = new ListEmployees();
-        $employees = $employeeProvider->getAllEmployeesSorted();
+        $employees = $employeeProvider();
 
         $this->assertCount(4, $employees);
         $this->assertEquals('SEPP', (string) $employees[0]->getName());
