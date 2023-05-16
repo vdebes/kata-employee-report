@@ -2,7 +2,7 @@
 
 namespace Vdebes\KataEmployeeReport;
 
-class EmployeeProvider
+class ListEmployees
 {
     /**
      * @return array<string, int>

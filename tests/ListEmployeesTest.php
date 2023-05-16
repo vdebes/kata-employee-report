@@ -2,14 +2,14 @@
 
 namespace KataEmployeeReport\tests;
 
-use Vdebes\KataEmployeeReport\EmployeeProvider;
+use Vdebes\KataEmployeeReport\ListEmployees;
 use PHPUnit\Framework\TestCase;
 
-class EmployeeProviderTest extends TestCase
+class ListEmployeesTest extends TestCase
 {
     public function testGetEmployeesOver18(): void
     {
-        $employeeProvider = new EmployeeProvider();
+        $employeeProvider = new ListEmployees();
         $employees = $employeeProvider->getEmployeesOver18();
 
         $this->assertCount(2, $employees);
@@ -19,7 +19,7 @@ class EmployeeProviderTest extends TestCase
 
     public function testGetAllEmployeesSorted(): void
     {
-        $employeeProvider = new EmployeeProvider();
+        $employeeProvider = new ListEmployees();
         $employees = $employeeProvider->getAllEmployeesSorted();
 
         $this->assertCount(4, $employees);
