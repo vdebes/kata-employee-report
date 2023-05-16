@@ -24,7 +24,7 @@ class ListEmployees
         );
 
         return array_map(
-            static fn (array $employee): Employee => new Employee($employee[0], $employee[1]),
+            static fn (array $employee): Employee => new Employee(new Name($employee[0]), $employee[1]),
             $employees
         );
     }

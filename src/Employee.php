@@ -6,16 +6,16 @@ namespace Vdebes\KataEmployeeReport;
 
 final class Employee
 {
-    private string $name;
+    private Name $name;
     private int $age;
 
-    public function __construct(string $name, int $age)
+    public function __construct(Name $name, int $age)
     {
         $this->name = $name;
         $this->age = $age;
     }
 
-    public function getName(): string
+    public function getName(): Name
     {
         return $this->name;
     }

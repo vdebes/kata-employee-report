@@ -15,7 +15,7 @@ final class Name
         $this->name = $name;
     }
 
-    public function __toString(): string
+    public function asString(): string
     {
         return $this->name;
     }
