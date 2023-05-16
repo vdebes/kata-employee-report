@@ -24,13 +24,15 @@ class ListEmployees
 
     public function getEmployeesOver18(): array
     {
+        $isLegalFilter = static function (Employee $employee): bool {
+            return $employee->hasLegalAge();
+        };
+
         return self::sortByNameDescending(
             array_values(
                 array_filter(
                     self::getAllEmployees(),
-                    static function (Employee $employee): bool {
-                        return $employee->hasLegalAge();
-                    }
+                    $isLegalFilter
                 )
             )
         );
