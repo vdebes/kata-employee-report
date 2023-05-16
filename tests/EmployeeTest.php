@@ -15,4 +15,16 @@ class EmployeeTest extends TestCase
         $this->assertInstanceOf(Employee::class, $employee);
         $this->assertSame('MAX', $employee->getName()->asString());
     }
+
+    public function testItHasLegalAge(): void
+    {
+        $employee = new Employee(new Name('Max'), new Age(18));
+        $this->assertTrue($employee->hasLegalAge());
+    }
+
+    public function testItHasNotLegalAge(): void
+    {
+        $employee = new Employee(new Name('Max'), new Age(17));
+        $this->assertFalse($employee->hasLegalAge());
+    }
 }

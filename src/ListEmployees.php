@@ -29,7 +29,7 @@ class ListEmployees
                 array_filter(
                     self::getAllEmployees(),
                     static function (Employee $employee): bool {
-                        return $employee->getAge()->asInteger() >= 18;
+                        return $employee->hasLegalAge();
                     }
                 )
             )
