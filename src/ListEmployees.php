@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Vdebes\KataEmployeeReport;
 
-class ListEmployees
+final class ListEmployees
 {
     /**
      * @return array<string, int>

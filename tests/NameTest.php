@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KataEmployeeReport\tests;
 
 use Vdebes\KataEmployeeReport\Name;

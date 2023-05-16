@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace KataEmployeeReport\tests;
 
 use Vdebes\KataEmployeeReport\ListEmployees;
@@ -7,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Vdebes\KataEmployeeReport\Employee;
 use Vdebes\KataEmployeeReport\LegalAgeFilter;
 
-class ListEmployeesTest extends TestCase
+final class ListEmployeesTest extends TestCase
 {
     public function testGetEmployeesOver18(): void
     {
